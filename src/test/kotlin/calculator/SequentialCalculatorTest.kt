@@ -5,7 +5,7 @@ import calculator.utils.Const
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
-class CalculationTest {
+class SequentialCalculatorTest {
     private val calculation = Calculation()
     @Test
     fun `빈 문자열 입력 시 0을 반환한다`() {
