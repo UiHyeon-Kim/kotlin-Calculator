@@ -3,6 +3,7 @@ package calculator.controller
 import calculator.model.Calculation
 import calculator.model.Formula
 import calculator.model.PriorityCalculator
+import calculator.model.SequentialCalculator
 import calculator.utils.retryInput
 import calculator.view.InputView
 import calculator.view.OutputView
@@ -10,9 +11,9 @@ import calculator.view.OutputView
 class Calculator(
     private val inputView: InputView,
     private val outputView: OutputView,
-    private val calculation: Calculation,
+    private val sequentialCalculator: SequentialCalculator,
+    private val priorityCalculator: PriorityCalculator,
 ) {
-    private val priorityCalculator = PriorityCalculator()
 
     fun execute() {
         val (numbers, operators) = getFormula()
@@ -34,7 +35,7 @@ class Calculator(
     }
 
     private fun sequenceCalculation(numbers: List<Double>, operators: List<String>) {
-        val result = calculation(numbers, operators)
+        val result = sequentialCalculator(numbers, operators)
         outputView.printOperationResults(result)
     }
 
